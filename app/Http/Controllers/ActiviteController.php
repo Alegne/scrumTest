@@ -16,8 +16,16 @@ class ActiviteController extends Controller
      */
     public function index()
     {
-        $activites = Activite::orderBy('created_at', 'desc')->get();
-        return response()->json($activites);
+        if(request('q')){
+            if (request('q') !== '') {
+                $activites = Activite::where('name', 'like', '%'.request('q').'%')->orderBy('created_at', 'desc')->get();
+                return response()->json($activites);
+            } else {
+                return $this->refresh();
+            }
+        }else{
+            return $this->refresh();
+        }
     }
 
     /**
@@ -54,8 +62,7 @@ class ActiviteController extends Controller
 
         $activite = Activite::create($request->all());
         if ($activite) {
-            $activites = Activite::orderBy('created_at', 'desc')->get();
-            return redirect(URL::previous());
+            return $this->refresh();
         }
     }
 
@@ -88,9 +95,16 @@ class ActiviteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $activite = Activite::find($id);
+        $activite->name = request('name');
+        $activite->description = request('description');
+        $activite->save();
+
+        if($activite){
+            return $this->refresh();
+        }
     }
 
     /**
@@ -101,6 +115,18 @@ class ActiviteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $activite = Activite::find($id);
+        if ($activite->delete()) {
+            return $this->refresh();
+        } else {
+            return response()->json(['error' => 'Erreur lors de la suppression!'], 425);
+        }
+        
+    }
+
+    protected function refresh()
+    {
+        $activites = Activite::orderBy('created_at', 'desc')->get();
+        return response()->json($activites);
     }
 }
