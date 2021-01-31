@@ -14,7 +14,7 @@
 
         <div class="row" style="padding:0.5em">
             <div class="col-md-3" v-for="activite in activites" :key="activite.id">
-                <div class="card text-white bg-primary mb-2" style="height:19rem">
+                <div class="card text-white bg-primary mb-2" style="height:19rem" v-if="activite.etat_id ===1">
                     <router-link to="/tache" class="text-white">
                         <div class="card-header overflow-auto"><h5>{{activite.name}}</h5></div>
                     </router-link>
@@ -23,13 +23,55 @@
                         <p class="card-text">{{activite.description}}</p>
                     </div>
                 
-                    <div class="card-footer text-muted d-flex justify-content-between align-item-center ">
-                        <em>100% Terminé</em>
+                    <div class="card-footer d-flex justify-content-between align-item-center ">
+                        <em>Ouvert</em>
                         <div>
                             <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#editModalCenter" @click="edit(activite.id)" > 
                                 <EditIcon stroke="#00FF00"/>
                             </button>
-                            <button type="button" class="btn btn-sm form-inline" @click="activiteDelete(activite.id)" >
+                            <button type="button" class="btn btn-sm form-inline" data-toggle="modal" data-target="#confirme" @click="edit(activite.id)">
+                                <Trash2Icon stroke="#FF0000"/>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card text-white bg-success mb-2" style="height:19rem" v-if="activite.etat_id ===2">
+                    <router-link to="/tache" class="text-white">
+                        <div class="card-header overflow-auto"><h5>{{activite.name}}</h5></div>
+                    </router-link>
+                    <div class="card-body overflow-auto">
+                        <h5 class="card-title">Description:</h5>
+                        <p class="card-text">{{activite.description}}</p>
+                    </div>
+                
+                    <div class="card-footer d-flex justify-content-between align-item-center ">
+                        <em>En cours</em>
+                        <div>
+                            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#editModalCenter" @click="edit(activite.id)" > 
+                                <EditIcon stroke="#00FF00"/>
+                            </button>
+                            <button type="button" class="btn btn-sm form-inline" data-toggle="modal" data-target="#confirme" @click="edit(activite.id)" >
+                                <Trash2Icon stroke="#FF0000"/>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card text-white bg-secondary mb-2" style="height:19rem" v-if="activite.etat_id ===3">
+                    <router-link to="/tache" class="text-white">
+                        <div class="card-header overflow-auto"><h5>{{activite.name}}</h5></div>
+                    </router-link>
+                    <div class="card-body overflow-auto">
+                        <h5 class="card-title">Description:</h5>
+                        <p class="card-text">{{activite.description}}</p>
+                    </div>
+                
+                    <div class="card-footer d-flex justify-content-between align-item-center ">
+                        <em>Terminé</em>
+                        <div>
+                            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#editModalCenter" @click="edit(activite.id)" > 
+                                <EditIcon stroke="#00FF00"/>
+                            </button>
+                            <button type="button" class="btn btn-sm form-inline" data-toggle="modal" data-target="#confirme" @click="edit(activite.id)">
                                 <Trash2Icon stroke="#FF0000"/>
                             </button>
                         </div>
@@ -99,7 +141,28 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
+
+          <!-- Modal de confirmation -->
+        <div class="modal fade" id="confirme" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Supppression</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Voulez-vous vraiment confirmer la suppression?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" @click="activiteDelete()">Oui</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -125,6 +188,7 @@
                 id: '',
                 activiteName: '',
                 activiteDescription: '',
+                etat_id: '',
                 q: '',
             }
         },
@@ -167,17 +231,15 @@
                     .catch(error => console.log(error));
             },
 
-            activiteDelete(key){
-                if (confirm("Veuillez confirmer la suppression.")) {
-                  if(key){
-                      axios.delete(this.Url.url + '/activiteListe/' + key)
+            activiteDelete(){
+                  if(this.id){
+                      axios.delete(this.Url.url + '/activiteListe/' + this.id)
                       .then(response => console.log(response.data))
                       .catch(error => console.log(error));
                   }
                     axios.get(this.Url.url + '/activiteListe')
                     .then(response => this.activites = response.data)
                     .catch(error => console.log(error));  
-                }
             },
 
             edit(key){

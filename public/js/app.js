@@ -2015,6 +2015,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2029,6 +2092,7 @@ __webpack_require__.r(__webpack_exports__);
       id: '',
       activiteName: '',
       activiteDescription: '',
+      etat_id: '',
       q: ''
     };
   },
@@ -2084,24 +2148,22 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(error);
       });
     },
-    activiteDelete: function activiteDelete(key) {
+    activiteDelete: function activiteDelete() {
       var _this4 = this;
 
-      if (confirm("Veuillez confirmer la suppression.")) {
-        if (key) {
-          axios["delete"](this.Url.url + '/activiteListe/' + key).then(function (response) {
-            return console.log(response.data);
-          })["catch"](function (error) {
-            return console.log(error);
-          });
-        }
-
-        axios.get(this.Url.url + '/activiteListe').then(function (response) {
-          return _this4.activites = response.data;
+      if (this.id) {
+        axios["delete"](this.Url.url + '/activiteListe/' + this.id).then(function (response) {
+          return console.log(response.data);
         })["catch"](function (error) {
           return console.log(error);
         });
       }
+
+      axios.get(this.Url.url + '/activiteListe').then(function (response) {
+        return _this4.activites = response.data;
+      })["catch"](function (error) {
+        return console.log(error);
+      });
     },
     edit: function edit(key) {
       var _this5 = this;
@@ -2148,13 +2210,8 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TacheComponent.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
 //
 //
 //
@@ -2216,7 +2273,116 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 
@@ -52442,6 +52608,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _TacheComponent_vue_vue_type_template_id_377a0955___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TacheComponent.vue?vue&type=template&id=377a0955& */ "./resources/js/components/TacheComponent.vue?vue&type=template&id=377a0955&");
 /* harmony import */ var _TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TacheComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/TacheComponent.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -52496,7 +52665,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TacheComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TacheComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default())); 
 
 /***/ }),
 
@@ -52622,82 +52795,266 @@ var render = function() {
       [
         _vm._l(_vm.activites, function(activite) {
           return _c("div", { key: activite.id, staticClass: "col-md-3" }, [
-            _c(
-              "div",
-              {
-                staticClass: "card text-white bg-primary mb-2",
-                staticStyle: { height: "19rem" }
-              },
-              [
-                _c(
-                  "router-link",
-                  { staticClass: "text-white", attrs: { to: "/tache" } },
-                  [
-                    _c("div", { staticClass: "card-header overflow-auto" }, [
-                      _c("h5", [_vm._v(_vm._s(activite.name))])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body overflow-auto" }, [
-                  _c("h5", { staticClass: "card-title" }, [
-                    _vm._v("Description:")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "card-text" }, [
-                    _vm._v(_vm._s(activite.description))
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
+            activite.etat_id === 1
+              ? _c(
                   "div",
                   {
-                    staticClass:
-                      "card-footer text-muted d-flex justify-content-between align-item-center "
+                    staticClass: "card text-white bg-primary mb-2",
+                    staticStyle: { height: "19rem" }
                   },
                   [
-                    _c("em", [_vm._v("100% Terminé")]),
+                    _c(
+                      "router-link",
+                      { staticClass: "text-white", attrs: { to: "/tache" } },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "card-header overflow-auto" },
+                          [_c("h5", [_vm._v(_vm._s(activite.name))])]
+                        )
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("div", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-sm",
-                          attrs: {
-                            type: "button",
-                            "data-toggle": "modal",
-                            "data-target": "#editModalCenter"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.edit(activite.id)
-                            }
-                          }
-                        },
-                        [_c("EditIcon", { attrs: { stroke: "#00FF00" } })],
-                        1
-                      ),
+                    _c("div", { staticClass: "card-body overflow-auto" }, [
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v("Description:")
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-sm form-inline",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              return _vm.activiteDelete(activite.id)
-                            }
-                          }
-                        },
-                        [_c("Trash2Icon", { attrs: { stroke: "#FF0000" } })],
-                        1
-                      )
-                    ])
-                  ]
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(activite.description))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "card-footer d-flex justify-content-between align-item-center "
+                      },
+                      [
+                        _c("em", [_vm._v("Ouvert")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#editModalCenter"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(activite.id)
+                                }
+                              }
+                            },
+                            [_c("EditIcon", { attrs: { stroke: "#00FF00" } })],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm form-inline",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#confirme"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(activite.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("Trash2Icon", { attrs: { stroke: "#FF0000" } })
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
-            )
+              : _vm._e(),
+            _vm._v(" "),
+            activite.etat_id === 2
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "card text-white bg-success mb-2",
+                    staticStyle: { height: "19rem" }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-white", attrs: { to: "/tache" } },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "card-header overflow-auto" },
+                          [_c("h5", [_vm._v(_vm._s(activite.name))])]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body overflow-auto" }, [
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v("Description:")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(activite.description))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "card-footer d-flex justify-content-between align-item-center "
+                      },
+                      [
+                        _c("em", [_vm._v("En cours")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#editModalCenter"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(activite.id)
+                                }
+                              }
+                            },
+                            [_c("EditIcon", { attrs: { stroke: "#00FF00" } })],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm form-inline",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#confirme"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(activite.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("Trash2Icon", { attrs: { stroke: "#FF0000" } })
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            activite.etat_id === 3
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "card text-white bg-secondary mb-2",
+                    staticStyle: { height: "19rem" }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-white", attrs: { to: "/tache" } },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "card-header overflow-auto" },
+                          [_c("h5", [_vm._v(_vm._s(activite.name))])]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body overflow-auto" }, [
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v("Description:")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(activite.description))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "card-footer d-flex justify-content-between align-item-center "
+                      },
+                      [
+                        _c("em", [_vm._v("Terminé")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#editModalCenter"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(activite.id)
+                                }
+                              }
+                            },
+                            [_c("EditIcon", { attrs: { stroke: "#00FF00" } })],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm form-inline",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#confirme"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(activite.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("Trash2Icon", { attrs: { stroke: "#FF0000" } })
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e()
           ])
         }),
         _vm._v(" "),
@@ -52961,6 +53318,65 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "confirme",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalCenterTitle",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n                Voulez-vous vraiment confirmer la suppression?\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Non")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        return _vm.activiteDelete()
+                      }
+                    }
+                  },
+                  [_vm._v("Oui")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -53014,6 +53430,31 @@ var staticRenderFns = [
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [_vm._v("Supppression")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -53039,40 +53480,343 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid sidebar-sticky" }, [
-    _vm._m(0),
+    _c(
+      "nav",
+      {
+        staticClass: "navbar navbar-dark sticky-top",
+        staticStyle: { "background-color": "rgb(247, 247, 247)" }
+      },
+      [
+        _c("h2", [
+          _vm._v("Liste des Activités " + _vm._s(" ")),
+          _c("span", { staticClass: "badge badge-secondary" }, [
+            _vm._v(_vm._s(_vm.taches.length))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("form", { staticClass: "form-inline" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.q,
+                expression: "q"
+              }
+            ],
+            staticClass: "form-control mr-md-2",
+            staticStyle: { width: "20.60rem" },
+            attrs: {
+              type: "search",
+              placeholder: "Recherche",
+              "aria-label": "Search"
+            },
+            domProps: { value: _vm.q },
+            on: {
+              keyup: _vm.searchtache,
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.q = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-sm",
+              attrs: {
+                type: "button",
+                "data-toggle": "modal",
+                "data-target": "#exampleModalCenter"
+              },
+              on: { click: _vm.init }
+            },
+            [
+              _c("i", {
+                staticClass: "fas fa-plus-circle",
+                staticStyle: { "font-size": "2em", margin: "0.05em" }
+              })
+            ]
+          )
+        ])
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",
       { staticClass: "row", staticStyle: { padding: "0.5em" } },
-      _vm._l(_vm.activites, function(activite) {
-        return _c("div", { key: activite.id, staticClass: "col-sm-3" }, [
-          _c(
-            "div",
-            {
-              staticClass: "card text-white bg-primary mb-3",
-              staticStyle: { width: "18rem", height: "19rem" }
-            },
-            [
-              _c("div", { staticClass: "card-header" }, [
-                _c("h4", [_vm._v(_vm._s(activite.name))])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c("h5", { staticClass: "card-title" }, [
-                  _vm._v("Description:")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text" }, [
-                  _vm._v(_vm._s(activite.description))
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(1, true)
-            ]
-          )
-        ])
-      }),
-      0
+      [
+        _vm._l(_vm.taches, function(tache) {
+          return _c("div", { key: tache.id, staticClass: "col-md-3" }, [
+            tache.etat_id === 1
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "card text-white bg-primary mb-2",
+                    staticStyle: { height: "19rem" }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-white", attrs: { to: "/tache" } },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "card-header overflow-auto" },
+                          [_c("h5", [_vm._v(_vm._s(tache.name))])]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body overflow-auto" }, [
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v("Description:")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(tache.description))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "card-footer d-flex justify-content-between align-item-center "
+                      },
+                      [
+                        _c("em", [_vm._v("Ouvert")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#editModalCenter"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(tache.id)
+                                }
+                              }
+                            },
+                            [_c("EditIcon", { attrs: { stroke: "#00FF00" } })],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm form-inline",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#confirme"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(tache.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("Trash2Icon", { attrs: { stroke: "#FF0000" } })
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            tache.etat_id === 2
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "card text-white bg-success mb-2",
+                    staticStyle: { height: "19rem" }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-white", attrs: { to: "/tache" } },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "card-header overflow-auto" },
+                          [_c("h5", [_vm._v(_vm._s(tache.name))])]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body overflow-auto" }, [
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v("Description:")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(tache.description))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "card-footer d-flex justify-content-between align-item-center "
+                      },
+                      [
+                        _c("em", [_vm._v("En cours")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#editModalCenter"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(tache.id)
+                                }
+                              }
+                            },
+                            [_c("EditIcon", { attrs: { stroke: "#00FF00" } })],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm form-inline",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#confirme"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(tache.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("Trash2Icon", { attrs: { stroke: "#FF0000" } })
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            tache.etat_id === 3
+              ? _c(
+                  "div",
+                  {
+                    staticClass: "card text-white bg-secondary mb-2",
+                    staticStyle: { height: "19rem" }
+                  },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "text-white", attrs: { to: "/tache" } },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "card-header overflow-auto" },
+                          [_c("h5", [_vm._v(_vm._s(tache.name))])]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body overflow-auto" }, [
+                      _c("h5", { staticClass: "card-title" }, [
+                        _vm._v("Description:")
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(tache.description))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "card-footer d-flex justify-content-between align-item-center "
+                      },
+                      [
+                        _c("em", [_vm._v("Terminé")]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#editModalCenter"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(tache.id)
+                                }
+                              }
+                            },
+                            [_c("EditIcon", { attrs: { stroke: "#00FF00" } })],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm form-inline",
+                              attrs: {
+                                type: "button",
+                                "data-toggle": "modal",
+                                "data-target": "#confirme"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.edit(tache.id)
+                                }
+                              }
+                            },
+                            [
+                              _c("Trash2Icon", { attrs: { stroke: "#FF0000" } })
+                            ],
+                            1
+                          )
+                        ])
+                      ]
+                    )
+                  ],
+                  1
+                )
+              : _vm._e()
+          ])
+        }),
+        _vm._v(" "),
+        _c("router-view")
+      ],
+      2
     ),
     _vm._v(" "),
     _c(
@@ -53096,12 +53840,12 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _c("form", [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "nameActivite" } }, [
+                    _c("label", { attrs: { for: "nametache" } }, [
                       _vm._v("Nom de l'activité")
                     ]),
                     _vm._v(" "),
@@ -53110,26 +53854,26 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.activiteName,
-                          expression: "activiteName"
+                          value: _vm.tacheName,
+                          expression: "tacheName"
                         }
                       ],
                       staticClass: "form-control",
                       attrs: {
                         type: "text",
-                        id: "nameActivite",
-                        "aria-describedby": "nameActivite",
+                        id: "nametache",
+                        "aria-describedby": "nametache",
                         placeholder: "Nom de l'activité",
-                        maxlength: "50",
+                        maxlength: "35",
                         required: ""
                       },
-                      domProps: { value: _vm.activiteName },
+                      domProps: { value: _vm.tacheName },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.activiteName = $event.target.value
+                          _vm.tacheName = $event.target.value
                         }
                       }
                     }),
@@ -53138,14 +53882,14 @@ var render = function() {
                       "small",
                       {
                         staticClass: "form-text text-muted",
-                        attrs: { id: "nameActivite" }
+                        attrs: { id: "nametache" }
                       },
                       [_vm._v("Precisez le nom de votre activité.")]
                     )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "activiteDescription" } }, [
+                    _c("label", { attrs: { for: "tacheDescription" } }, [
                       _vm._v("Déscription:")
                     ]),
                     _vm._v(" "),
@@ -53154,23 +53898,22 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.activiteDescription,
-                          expression: "activiteDescription"
+                          value: _vm.tacheDescription,
+                          expression: "tacheDescription"
                         }
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        id: "activiteDescription",
-                        placeholder: "Description de l'activité",
-                        rows: "5"
+                        id: "tacheDescription",
+                        placeholder: "Description de l'activité"
                       },
-                      domProps: { value: _vm.activiteDescription },
+                      domProps: { value: _vm.tacheDescription },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.activiteDescription = $event.target.value
+                          _vm.tacheDescription = $event.target.value
                         }
                       }
                     })
@@ -53192,10 +53935,198 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-success",
-                    attrs: { type: "submit" },
-                    on: { click: _vm.activiteStore }
+                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    on: { click: _vm.tacheStore }
                   },
                   [_vm._v("Enregistrer")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "editModalCenter",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "editModalCenterTitle",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("form", [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nametache" } }, [
+                      _vm._v("Nom de l'activité")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tacheName,
+                          expression: "tacheName"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "nametache",
+                        "aria-describedby": "nametache",
+                        placeholder: "Nom de l'activité",
+                        maxlength: "35",
+                        required: ""
+                      },
+                      domProps: { value: _vm.tacheName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.tacheName = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "small",
+                      {
+                        staticClass: "form-text text-muted",
+                        attrs: { id: "nametache" }
+                      },
+                      [_vm._v("Precisez le nom de votre activité.")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "tacheDescription" } }, [
+                      _vm._v("Déscription:")
+                    ]),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tacheDescription,
+                          expression: "tacheDescription"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "tacheDescription",
+                        placeholder: "Description de l'activité",
+                        rows: "5"
+                      },
+                      domProps: { value: _vm.tacheDescription },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.tacheDescription = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Annuler")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    on: { click: _vm.tacheUpdate }
+                  },
+                  [_vm._v("Enregistrer")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "confirme",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalCenterTitle",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n                Voulez-vous vraiment confirmer la suppression?\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Non")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function($event) {
+                        return _vm.tacheDelete()
+                      }
+                    }
+                  },
+                  [_vm._v("Oui")]
                 )
               ])
             ])
@@ -53210,43 +54141,50 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      {
-        staticClass: "navbar navbar-dark sticky-top",
-        staticStyle: { "background-color": "rgb(247, 247, 247)" }
-      },
-      [
-        _c("h2", [_vm._v("Liste des Taches pour l'activité: ")]),
-        _vm._v(" "),
-        _c("form", { staticClass: "form-inline" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-sm",
-              attrs: {
-                type: "button",
-                "data-toggle": "modal",
-                "data-target": "#exampleModalCenter"
-              }
-            },
-            [
-              _c("i", {
-                staticClass: "fas fa-plus-circle",
-                staticStyle: { "font-size": "2em", margin: "0.05em" }
-              })
-            ]
-          )
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
+        [_vm._v("Ajout d'une activité")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-footer text-muted" }, [
-      _c("em", [_vm._v("100% Terminé")])
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "editModalLongTitle" } },
+        [_vm._v("Edition d'une activité")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
     ])
   },
   function() {
@@ -53257,7 +54195,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Ajout d'une activité")]
+        [_vm._v("Supppression")]
       ),
       _vm._v(" "),
       _c(
