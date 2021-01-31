@@ -26,11 +26,11 @@
                     <div class="card-footer text-muted d-flex justify-content-between align-item-center ">
                         <em>100% Terminé</em>
                         <div>
-                            <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#editModalCenter" @click="edit(activite.id)" style="margin:2px;"> 
-                                <i class="fas fa-edit" style="font-size:1em; margin:0.05e"></i>
+                            <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#editModalCenter" @click="edit(activite.id)" > 
+                                <EditIcon stroke="#00FF00"/>
                             </button>
-                            <button type="button" class="btn btn-sm btn-danger form-inline" @click="activiteDelete(activite.id)" style="margin:2px;">
-                                <i class="fas fa-trash" style="font-size:1em; margin:0.05e"></i>
+                            <button type="button" class="btn btn-sm form-inline" @click="activiteDelete(activite.id)" >
+                                <Trash2Icon stroke="#FF0000"/>
                             </button>
                         </div>
                     </div>
@@ -109,12 +109,13 @@
 <script>
 
     import UrlStore from "../stores/UrlStore";
-
+    import { EditIcon, Trash2Icon } from "vue-feather-icons";
 
     export default {
 
         components:{
-
+            EditIcon,
+            Trash2Icon,
         },
 
         data(){
