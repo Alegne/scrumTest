@@ -20,10 +20,13 @@ Route::get('/', function () {
 
 //Route pour le ActiviteController
 Route::get('/activiteListe/{q?}', [ActiviteController::class, 'index'])->name('activiteListeIndex');
-Route::post('/activiteListe', [ActiviteController::class, 'store'])->name('activiteListeStore');
 Route::patch('/activiteListe/{id}', [ActiviteController::class, 'update'])->name('activiteListeUpdate');
 Route::delete('/activiteListe/{id}', [ActiviteController::class, 'destroy'])->name('activiteListeDestroy');
 
 
 //Route pour le TacheController
-//Route::get('tacheListe/{id}', 'TacheController@index');
+Route::get('/tacheListe/{q?}/{crit?}', [TacheController::class, 'index'])->name('tacheListeIndex');
+Route::get('/searchListe/{q?}', [TacheController::class, 'index'])->name('tacheListeIndex');
+Route::post('tacheListe/{q?}', [TacheController::class, 'store'])->name('tacheListeStore');
+Route::patch('/tacheListe/{id}', [TacheController::class, 'update'])->name('tacheListeUpdate');
+Route::delete('/tacheListe/{id}', [TacheController::class, 'destroy'])->name('tacheListeDestroy');

@@ -5,10 +5,12 @@ window.Vue = require('vue').default;
 
 //utilisation des routes en VueJs
 import VueRouter from 'vue-router';
+
 Vue.use(VueRouter);
 
 import Activite from './components/ActiviteComponent.vue';
 import Tache from './components/TacheComponent.vue';
+
 
 const routes = [
     {
@@ -16,7 +18,7 @@ const routes = [
         component: Activite,
     },
     {
-        path: '/tache',
+        path: '/tache/:id',
         component: Tache,
     },
 ];

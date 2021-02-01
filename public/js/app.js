@@ -1906,7 +1906,326 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _stores_UrlStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../stores/UrlStore */ "./resources/js/stores/UrlStore.js");
+/* harmony import */ var _stores_ActiviteStore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../stores/ActiviteStore */ "./resources/js/stores/ActiviteStore.js");
+/* harmony import */ var vue_feather_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons */ "./node_modules/vue-feather-icons/dist/vue-feather-icons.es.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    EditIcon: vue_feather_icons__WEBPACK_IMPORTED_MODULE_2__.EditIcon,
+    Trash2Icon: vue_feather_icons__WEBPACK_IMPORTED_MODULE_2__.Trash2Icon
+  },
+  data: function data() {
+    return {
+      activites: {},
+      Url: _stores_UrlStore__WEBPACK_IMPORTED_MODULE_0__.default.data,
+      id: '',
+      activiteName: '',
+      activiteDescription: '',
+      etat_id: '',
+      q: ''
+    };
+  },
+  created: function created() {
+    //recuperation des donnees envoyee par ActiviteController@index
+    this.recuperation();
+  },
+  methods: {
+    recuperation: function recuperation() {
+      var _this = this;
+
+      axios.get(this.Url.url + '/activiteListe').then(function (response) {
+        return _this.activites = response.data;
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    activiteStore: function activiteStore() {
+      var _this2 = this;
+
+      if (this.activiteName != '') {
+        axios.post(this.Url.url + '/activiteListe', {
+          name: this.activiteName,
+          description: this.activiteDescription,
+          etat_id: 1
+        }).then(function (response) {
+          _this2.$emit('activite-liste', response.data);
+
+          _this2.recuperation();
+        })["catch"](function (error) {
+          return console.log(error);
+        });
+      }
+    },
+    activiteUpdate: function activiteUpdate() {
+      var _this3 = this;
+
+      if (this.activiteName != '') {
+        axios.patch(this.Url.url + '/activiteListe/' + this.id, {
+          name: this.activiteName,
+          description: this.activiteDescription
+        }).then(function (response) {
+          _this3.$emit('activite-liste', response.data);
+
+          _this3.recuperation();
+        })["catch"](function (error) {
+          return console.log(error);
+        });
+      }
+    },
+    activiteDelete: function activiteDelete() {
+      var _this4 = this;
+
+      if (this.id) {
+        axios["delete"](this.Url.url + '/activiteListe/' + this.id).then(function (response) {
+          console.log(response.data);
+
+          _this4.recuperation();
+        })["catch"](function (error) {
+          return console.log(error);
+        });
+      }
+    },
+    edit: function edit(key) {
+      var _this5 = this;
+
+      this.activites.forEach(function (element) {
+        if (element.id === key) {
+          _this5.id = element.id;
+          _this5.activiteName = element.name;
+          _this5.activiteDescription = element.description;
+        }
+      });
+    },
+    init: function init() {
+      this.activiteName = '';
+      this.activiteDescription = '';
+      this.id = '';
+    },
+    searchActivite: function searchActivite() {
+      var _this6 = this;
+
+      if (this.q.length >= 2) {
+        axios.get(this.Url.url + '/activiteListe/' + this.q).then(function (response) {
+          return _this6.activites = response.data;
+        })["catch"](function (error) {
+          return console.log(error);
+        });
+      } else {
+        axios.get(this.Url.url + '/activiteListe').then(function (response) {
+          return _this6.activites = response.data;
+        })["catch"](function (error) {
+          return console.log(error);
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TacheComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TacheComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var _stores_UrlStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../stores/UrlStore */ "./resources/js/stores/UrlStore.js");
 /* harmony import */ var vue_feather_icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-feather-icons */ "./node_modules/vue-feather-icons/dist/vue-feather-icons.es.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2087,302 +2406,114 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      activites: {},
+      etat: '',
       Url: _stores_UrlStore__WEBPACK_IMPORTED_MODULE_0__.default.data,
+      activiteId: this.$route.params.id,
+      taches: {},
+      activite: {},
+      tachesActivite: {},
+      crit: '',
+      tacheName: '',
+      tacheDescription: '',
       id: '',
-      activiteName: '',
-      activiteDescription: '',
-      etat_id: '',
-      q: ''
+      flexRadioDefault: ''
     };
   },
   created: function created() {
-    var _this = this;
-
-    //recuperation des donnees envoyee par ActiviteController@index
-    axios.get(this.Url.url + '/activiteListe').then(function (response) {
-      return _this.activites = response.data;
-    })["catch"](function (error) {
-      return console.log(error);
-    });
+    //recuperation des donnees envoyee par tacheController@index
+    this.recuperation();
   },
   methods: {
-    activiteStore: function activiteStore() {
+    recuperation: function recuperation() {
+      var _this = this;
+
+      axios.get(this.Url.url + '/tacheListe/' + this.activiteId).then(function (response) {
+        _this.tachesActivite = response.data;
+        _this.taches = _this.tachesActivite.taches;
+        _this.activite = _this.tachesActivite.activite;
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    tacheStore: function tacheStore() {
       var _this2 = this;
 
-      if (this.activiteName != '') {
-        axios.post(this.Url.url + '/activiteListe', {
-          name: this.activiteName,
-          description: this.activiteDescription,
+      if (this.tacheName != '') {
+        axios.post(this.Url.url + '/tacheListe/' + this.activiteId, {
+          name: this.tacheName,
+          description: this.tacheDescription,
           etat_id: 1
         }).then(function (response) {
-          return _this2.$emit('activite-liste', response.data);
+          _this2.$emit('tache-liste', response.data);
+
+          _this2.recuperation();
         })["catch"](function (error) {
           return console.log(error);
         });
       }
-
-      axios.get(this.Url.url + '/activiteListe').then(function (response) {
-        return _this2.activites = response.data;
-      })["catch"](function (error) {
-        return console.log(error);
-      });
     },
-    activiteUpdate: function activiteUpdate() {
+    tacheUpdate: function tacheUpdate() {
       var _this3 = this;
 
-      if (this.activiteName != '') {
-        axios.patch(this.Url.url + '/activiteListe/' + this.id, {
-          name: this.activiteName,
-          description: this.activiteDescription
+      if (this.tacheName != '') {
+        axios.patch(this.Url.url + '/tacheListe/' + this.id, {
+          name: this.tacheName,
+          description: this.tacheDescription,
+          etat_id: this.etat
         }).then(function (response) {
-          return _this3.$emit('activite-liste', response.data);
+          _this3.$emit('tache-liste', response.data);
+
+          _this3.recuperation();
         })["catch"](function (error) {
           return console.log(error);
         });
       }
-
-      axios.get(this.Url.url + '/activiteListe').then(function (response) {
-        return _this3.activites = response.data;
-      })["catch"](function (error) {
-        return console.log(error);
-      });
     },
-    activiteDelete: function activiteDelete() {
+    tacheDelete: function tacheDelete() {
       var _this4 = this;
 
       if (this.id) {
-        axios["delete"](this.Url.url + '/activiteListe/' + this.id).then(function (response) {
-          return console.log(response.data);
+        axios["delete"](this.Url.url + '/tacheListe/' + this.id).then(function (response) {
+          _this4.recuperation();
         })["catch"](function (error) {
           return console.log(error);
         });
       }
-
-      axios.get(this.Url.url + '/activiteListe').then(function (response) {
-        return _this4.activites = response.data;
-      })["catch"](function (error) {
-        return console.log(error);
-      });
     },
     edit: function edit(key) {
       var _this5 = this;
 
-      this.activites.forEach(function (element) {
+      this.taches.forEach(function (element) {
         if (element.id === key) {
           _this5.id = element.id;
-          _this5.activiteName = element.name;
-          _this5.activiteDescription = element.description;
+          _this5.tacheName = element.name;
+          _this5.tacheDescription = element.description;
+          _this5.etat = element.etat_id;
         }
       });
     },
-    init: function init() {
-      this.activiteName = '';
-      this.activiteDescription = '';
-      this.id = '';
-    },
-    searchActivite: function searchActivite() {
+    searchTache: function searchTache() {
       var _this6 = this;
 
-      if (this.q.length >= 2) {
-        axios.get(this.Url.url + '/activiteListe/' + this.q).then(function (response) {
-          return _this6.activites = response.data;
+      if (this.crit.length >= 2) {
+        axios.get(this.Url.url + '/tacheListe/' + this.activiteId + '/' + this.crit).then(function (response) {
+          _this6.tachesActivite = response.data;
+          _this6.taches = _this6.tachesActivite.taches;
+          _this6.activite = _this6.tachesActivite.activite;
         })["catch"](function (error) {
           return console.log(error);
         });
       } else {
-        axios.get(this.Url.url + '/activiteListe').then(function (response) {
-          return _this6.activites = response.data;
-        })["catch"](function (error) {
-          return console.log(error);
-        });
+        this.recuperation();
       }
+    },
+    init: function init() {
+      this.tacheName = '';
+      this.tacheDescription = '';
     }
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  }
+  mounted: function mounted() {}
 });
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TacheComponent.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TacheComponent.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************************************************/
-/***/ (() => {
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /***/ }),
 
@@ -2409,7 +2540,7 @@ var routes = [{
   path: '/',
   component: _components_ActiviteComponent_vue__WEBPACK_IMPORTED_MODULE_1__.default
 }, {
-  path: '/tache',
+  path: '/tache/:id',
   component: _components_TacheComponent_vue__WEBPACK_IMPORTED_MODULE_2__.default
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__.default({
@@ -2465,6 +2596,26 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/stores/ActiviteStore.js":
+/*!**********************************************!*\
+  !*** ./resources/js/stores/ActiviteStore.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+var Activite = {
+  data: {
+    activite: {}
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Activite);
 
 /***/ }),
 
@@ -52608,9 +52759,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _TacheComponent_vue_vue_type_template_id_377a0955___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TacheComponent.vue?vue&type=template&id=377a0955& */ "./resources/js/components/TacheComponent.vue?vue&type=template&id=377a0955&");
 /* harmony import */ var _TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TacheComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/TacheComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -52665,11 +52813,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TacheComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TacheComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default())); 
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TacheComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -52805,7 +52949,10 @@ var render = function() {
                   [
                     _c(
                       "router-link",
-                      { staticClass: "text-white", attrs: { to: "/tache" } },
+                      {
+                        staticClass: "text-white",
+                        attrs: { to: "/tache/" + activite.id }
+                      },
                       [
                         _c(
                           "div",
@@ -52892,7 +53039,10 @@ var render = function() {
                   [
                     _c(
                       "router-link",
-                      { staticClass: "text-white", attrs: { to: "/tache" } },
+                      {
+                        staticClass: "text-white",
+                        attrs: { to: "/tache/" + activite.id }
+                      },
                       [
                         _c(
                           "div",
@@ -52979,7 +53129,10 @@ var render = function() {
                   [
                     _c(
                       "router-link",
-                      { staticClass: "text-white", attrs: { to: "/tache" } },
+                      {
+                        staticClass: "text-white",
+                        attrs: { to: "/tache/" + activite.id }
+                      },
                       [
                         _c(
                           "div",
@@ -53488,7 +53641,9 @@ var render = function() {
       },
       [
         _c("h2", [
-          _vm._v("Liste des Activités " + _vm._s(" ")),
+          _vm._v(
+            "Les taches de l'activité: " + _vm._s(_vm.activite.name + " ")
+          ),
           _c("span", { staticClass: "badge badge-secondary" }, [
             _vm._v(_vm._s(_vm.taches.length))
           ])
@@ -53500,8 +53655,8 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.q,
-                expression: "q"
+                value: _vm.crit,
+                expression: "crit"
               }
             ],
             staticClass: "form-control mr-md-2",
@@ -53511,14 +53666,14 @@ var render = function() {
               placeholder: "Recherche",
               "aria-label": "Search"
             },
-            domProps: { value: _vm.q },
+            domProps: { value: _vm.crit },
             on: {
-              keyup: _vm.searchtache,
+              keyup: _vm.searchTache,
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.q = $event.target.value
+                _vm.crit = $event.target.value
               }
             }
           }),
@@ -53559,17 +53714,9 @@ var render = function() {
                     staticStyle: { height: "19rem" }
                   },
                   [
-                    _c(
-                      "router-link",
-                      { staticClass: "text-white", attrs: { to: "/tache" } },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "card-header overflow-auto" },
-                          [_c("h5", [_vm._v(_vm._s(tache.name))])]
-                        )
-                      ]
-                    ),
+                    _c("div", { staticClass: "card-header overflow-auto" }, [
+                      _c("h5", [_vm._v(_vm._s(tache.name))])
+                    ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "card-body overflow-auto" }, [
                       _c("h5", { staticClass: "card-title" }, [
@@ -53633,8 +53780,7 @@ var render = function() {
                         ])
                       ]
                     )
-                  ],
-                  1
+                  ]
                 )
               : _vm._e(),
             _vm._v(" "),
@@ -53646,17 +53792,9 @@ var render = function() {
                     staticStyle: { height: "19rem" }
                   },
                   [
-                    _c(
-                      "router-link",
-                      { staticClass: "text-white", attrs: { to: "/tache" } },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "card-header overflow-auto" },
-                          [_c("h5", [_vm._v(_vm._s(tache.name))])]
-                        )
-                      ]
-                    ),
+                    _c("div", { staticClass: "card-header overflow-auto" }, [
+                      _c("h5", [_vm._v(_vm._s(tache.name))])
+                    ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "card-body overflow-auto" }, [
                       _c("h5", { staticClass: "card-title" }, [
@@ -53720,8 +53858,7 @@ var render = function() {
                         ])
                       ]
                     )
-                  ],
-                  1
+                  ]
                 )
               : _vm._e(),
             _vm._v(" "),
@@ -53733,17 +53870,9 @@ var render = function() {
                     staticStyle: { height: "19rem" }
                   },
                   [
-                    _c(
-                      "router-link",
-                      { staticClass: "text-white", attrs: { to: "/tache" } },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "card-header overflow-auto" },
-                          [_c("h5", [_vm._v(_vm._s(tache.name))])]
-                        )
-                      ]
-                    ),
+                    _c("div", { staticClass: "card-header overflow-auto" }, [
+                      _c("h5", [_vm._v(_vm._s(tache.name))])
+                    ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "card-body overflow-auto" }, [
                       _c("h5", { staticClass: "card-title" }, [
@@ -53807,8 +53936,7 @@ var render = function() {
                         ])
                       ]
                     )
-                  ],
-                  1
+                  ]
                 )
               : _vm._e()
           ])
@@ -53845,8 +53973,8 @@ var render = function() {
               _c("div", { staticClass: "modal-body" }, [
                 _c("form", [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "nametache" } }, [
-                      _vm._v("Nom de l'activité")
+                    _c("label", { attrs: { for: "nameTache" } }, [
+                      _vm._v("Nom de la tache")
                     ]),
                     _vm._v(" "),
                     _c("input", {
@@ -53861,9 +53989,9 @@ var render = function() {
                       staticClass: "form-control",
                       attrs: {
                         type: "text",
-                        id: "nametache",
-                        "aria-describedby": "nametache",
-                        placeholder: "Nom de l'activité",
+                        id: "nameTache",
+                        "aria-describedby": "nameTache",
+                        placeholder: "Nom de la tache",
                         maxlength: "35",
                         required: ""
                       },
@@ -53882,9 +54010,9 @@ var render = function() {
                       "small",
                       {
                         staticClass: "form-text text-muted",
-                        attrs: { id: "nametache" }
+                        attrs: { id: "nameTache" }
                       },
-                      [_vm._v("Precisez le nom de votre activité.")]
+                      [_vm._v("Precisez le nom de votre tache.")]
                     )
                   ]),
                   _vm._v(" "),
@@ -53905,7 +54033,7 @@ var render = function() {
                       staticClass: "form-control",
                       attrs: {
                         id: "tacheDescription",
-                        placeholder: "Description de l'activité"
+                        placeholder: "Description de la tache"
                       },
                       domProps: { value: _vm.tacheDescription },
                       on: {
@@ -53952,135 +54080,6 @@ var render = function() {
       {
         staticClass: "modal fade",
         attrs: {
-          id: "editModalCenter",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "editModalCenterTitle",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog modal-dialog-centered",
-            attrs: { role: "document" }
-          },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c("form", [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "nametache" } }, [
-                      _vm._v("Nom de l'activité")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.tacheName,
-                          expression: "tacheName"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        id: "nametache",
-                        "aria-describedby": "nametache",
-                        placeholder: "Nom de l'activité",
-                        maxlength: "35",
-                        required: ""
-                      },
-                      domProps: { value: _vm.tacheName },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.tacheName = $event.target.value
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "small",
-                      {
-                        staticClass: "form-text text-muted",
-                        attrs: { id: "nametache" }
-                      },
-                      [_vm._v("Precisez le nom de votre activité.")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "tacheDescription" } }, [
-                      _vm._v("Déscription:")
-                    ]),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.tacheDescription,
-                          expression: "tacheDescription"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        id: "tacheDescription",
-                        placeholder: "Description de l'activité",
-                        rows: "5"
-                      },
-                      domProps: { value: _vm.tacheDescription },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.tacheDescription = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Annuler")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: { type: "submit", "data-dismiss": "modal" },
-                    on: { click: _vm.tacheUpdate }
-                  },
-                  [_vm._v("Enregistrer")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
           id: "confirme",
           tabindex: "-1",
           role: "dialog",
@@ -54097,7 +54096,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(2),
+              _vm._m(1),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [
                 _vm._v(
@@ -54133,6 +54132,239 @@ var render = function() {
           ]
         )
       ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "editModalCenter",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "editModalCenterTitle",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "modal-dialog modal-dialog-centered",
+            attrs: { role: "document" }
+          },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c("form", [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "nameTache" } }, [
+                      _vm._v("Nom de l'activité")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tacheName,
+                          expression: "tacheName"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "nameTache",
+                        "aria-describedby": "nametache",
+                        placeholder: "Nom de la tache",
+                        maxlength: "35",
+                        required: ""
+                      },
+                      domProps: { value: _vm.tacheName },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.tacheName = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "small",
+                      {
+                        staticClass: "form-text text-muted",
+                        attrs: { id: "nameTache" }
+                      },
+                      [_vm._v("Precisez le nom de votre tache.")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "tacheDescription" } }, [
+                      _vm._v("Déscription:")
+                    ]),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.tacheDescription,
+                          expression: "tacheDescription"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "tacheDescription",
+                        placeholder: "Description de la tache",
+                        rows: "3"
+                      },
+                      domProps: { value: _vm.tacheDescription },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.tacheDescription = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("div", { staticClass: "form-check form-check-inline" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.etat,
+                            expression: "etat"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: {
+                          type: "radio",
+                          id: "flexRadioDefault1",
+                          value: "1"
+                        },
+                        domProps: { checked: _vm._q(_vm.etat, "1") },
+                        on: {
+                          change: function($event) {
+                            _vm.etat = "1"
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "flexRadioDefault1" }
+                        },
+                        [_vm._v("Ouvert")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check form-check-inline" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.etat,
+                            expression: "etat"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: {
+                          type: "radio",
+                          id: "flexRadioDefault2",
+                          value: "2"
+                        },
+                        domProps: { checked: _vm._q(_vm.etat, "2") },
+                        on: {
+                          change: function($event) {
+                            _vm.etat = "2"
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "flexRadioDefault2" }
+                        },
+                        [_vm._v("En cours")]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-check form-check-inline" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.etat,
+                            expression: "etat"
+                          }
+                        ],
+                        staticClass: "form-check-input",
+                        attrs: {
+                          type: "radio",
+                          id: "flexRadioDefault3",
+                          value: "3"
+                        },
+                        domProps: { checked: _vm._q(_vm.etat, "3") },
+                        on: {
+                          change: function($event) {
+                            _vm.etat = "3"
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-check-label",
+                          attrs: { for: "flexRadioDefault3" }
+                        },
+                        [_vm._v("Terminé")]
+                      )
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("Annuler")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "submit", "data-dismiss": "modal" },
+                    on: { click: _vm.tacheUpdate }
+                  },
+                  [_vm._v("Enregistrer")]
+                )
+              ])
+            ])
+          ]
+        )
+      ]
     )
   ])
 }
@@ -54145,32 +54377,7 @@ var staticRenderFns = [
       _c(
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
-        [_vm._v("Ajout d'une activité")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "editModalLongTitle" } },
-        [_vm._v("Edition d'une activité")]
+        [_vm._v("Ajout d'une tache")]
       ),
       _vm._v(" "),
       _c(
@@ -54196,6 +54403,31 @@ var staticRenderFns = [
         "h5",
         { staticClass: "modal-title", attrs: { id: "exampleModalLongTitle" } },
         [_vm._v("Supppression")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "editModalLongTitle" } },
+        [_vm._v("Edition d'une tache")]
       ),
       _vm._v(" "),
       _c(

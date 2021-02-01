@@ -14,11 +14,11 @@ class CreateForeignKey extends Migration
     public function up()
     {
         Schema::table('activites', function (Blueprint $table) {
-            $table->foreignId('etat_id')->constrained();
+            $table->foreignId('etat_id')->constrained()->default(1);//a verifier le default siça marche
         });
 
         Schema::table('taches', function (Blueprint $table) {
-            $table->foreignId('etat_id')->constrained();
+            $table->foreignId('etat_id')->constrained()->default(1);//a verifier le default siça marche
             $table->foreignId('activite_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }

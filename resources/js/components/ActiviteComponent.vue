@@ -15,7 +15,7 @@
         <div class="row" style="padding:0.5em">
             <div class="col-md-3" v-for="activite in activites" :key="activite.id">
                 <div class="card text-white bg-primary mb-2" style="height:19rem" v-if="activite.etat_id ===1">
-                    <router-link to="/tache" class="text-white">
+                    <router-link :to="'/tache/'+activite.id" class="text-white">
                         <div class="card-header overflow-auto"><h5>{{activite.name}}</h5></div>
                     </router-link>
                     <div class="card-body overflow-auto">
@@ -36,8 +36,8 @@
                     </div>
                 </div>
                 <div class="card text-white bg-success mb-2" style="height:19rem" v-if="activite.etat_id ===2">
-                    <router-link to="/tache" class="text-white">
-                        <div class="card-header overflow-auto"><h5>{{activite.name}}</h5></div>
+                    <router-link :to="'/tache/'+activite.id" class="text-white">
+                        <div class="card-header overflow-auto" ><h5>{{activite.name}}</h5></div>
                     </router-link>
                     <div class="card-body overflow-auto">
                         <h5 class="card-title">Description:</h5>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="card text-white bg-secondary mb-2" style="height:19rem" v-if="activite.etat_id ===3">
-                    <router-link to="/tache" class="text-white">
+                    <router-link :to="'/tache/'+activite.id" class="text-white">
                         <div class="card-header overflow-auto"><h5>{{activite.name}}</h5></div>
                     </router-link>
                     <div class="card-body overflow-auto">
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <router-view></router-view>
+            <router-view ></router-view>
         </div>  
 
         <!-- Modal Ajour-->
@@ -172,6 +172,7 @@
 <script>
 
     import UrlStore from "../stores/UrlStore";
+    import Activite from "../stores/ActiviteStore";
     import { EditIcon, Trash2Icon } from "vue-feather-icons";
 
     export default {
@@ -194,13 +195,17 @@
         },
 
         created(){//recuperation des donnees envoyee par ActiviteController@index
-            axios.get(this.Url.url + '/activiteListe')
-                .then(response => this.activites = response.data)
-                .catch(error => console.log(error));
+            this.recuperation();
 
         },
 
         methods:{
+            recuperation(){
+                axios.get(this.Url.url + '/activiteListe')
+                    .then(response => this.activites = response.data)
+                    .catch(error => console.log(error));
+            },
+
             activiteStore(){
                     if (this.activiteName != '') {
                         axios.post(this.Url.url + '/activiteListe', {
@@ -208,12 +213,12 @@
                         description: this.activiteDescription,
                         etat_id: 1,
                         })
-                        .then(response => this.$emit('activite-liste', response.data))
+                        .then(response => {
+                            this.$emit('activite-liste', response.data)
+                            this.recuperation()})
                         .catch(error => console.log(error));
                     }
-                    axios.get(this.Url.url + '/activiteListe')
-                    .then(response => this.activites = response.data)
-                    .catch(error => console.log(error));
+                    
                         
             },
 
@@ -223,23 +228,25 @@
                         name: this.activiteName,
                         description: this.activiteDescription,
                         })
-                        .then(response => this.$emit('activite-liste', response.data))
+                        .then(response => {
+                            this.$emit('activite-liste', response.data)
+                            this.recuperation()
+                        })
                         .catch(error => console.log(error));
                     }
-                    axios.get(this.Url.url + '/activiteListe')
-                    .then(response => this.activites = response.data)
-                    .catch(error => console.log(error));
+
             },
 
             activiteDelete(){
                   if(this.id){
                       axios.delete(this.Url.url + '/activiteListe/' + this.id)
-                      .then(response => console.log(response.data))
+                      .then(response => {
+                          console.log(response.data)
+                          this.recuperation()
+                        })
                       .catch(error => console.log(error));
                   }
-                    axios.get(this.Url.url + '/activiteListe')
-                    .then(response => this.activites = response.data)
-                    .catch(error => console.log(error));  
+
             },
 
             edit(key){

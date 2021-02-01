@@ -1,23 +1,24 @@
 <template>
 
     <div class="container-fluid sidebar-sticky">
+        
         <nav class="navbar navbar-dark sticky-top" style="background-color: rgb(247, 247, 247)">
-            <h2>Liste des Activités {{' '}}<span class="badge badge-secondary">{{taches.length}}</span></h2>
+            <h2>Les taches de l'activité: {{activite.name+" "}}<span class="badge badge-secondary">{{taches.length}}</span></h2>
             <form class="form-inline">
-                <input class="form-control mr-md-2" type="search" placeholder="Recherche" aria-label="Search" style="width: 20.60rem;" @keyup="searchtache" v-model="q">
+                <input class="form-control mr-md-2" type="search" placeholder="Recherche" aria-label="Search" style="width: 20.60rem;" @keyup="searchTache" v-model="crit">
             <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#exampleModalCenter" @click="init">
                 <i class="fas fa-plus-circle" style="font-size:2em; margin:0.05em"></i>
             </button>
             </form>
-            
         </nav>
-
+        
         <div class="row" style="padding:0.5em">
             <div class="col-md-3" v-for="tache in taches" :key="tache.id">
                 <div class="card text-white bg-primary mb-2" style="height:19rem" v-if="tache.etat_id ===1">
-                    <router-link to="/tache" class="text-white">
-                        <div class="card-header overflow-auto"><h5>{{tache.name}}</h5></div>
-                    </router-link>
+                    <div class="card-header overflow-auto">
+                        <h5>{{tache.name}}</h5>
+                    </div>
+    
                     <div class="card-body overflow-auto">
                         <h5 class="card-title">Description:</h5>
                         <p class="card-text">{{tache.description}}</p>
@@ -36,9 +37,10 @@
                     </div>
                 </div>
                 <div class="card text-white bg-success mb-2" style="height:19rem" v-if="tache.etat_id ===2">
-                    <router-link to="/tache" class="text-white">
-                        <div class="card-header overflow-auto"><h5>{{tache.name}}</h5></div>
-                    </router-link>
+                    <div class="card-header overflow-auto" >
+                        <h5>{{tache.name}}</h5>
+                    </div>
+                    
                     <div class="card-body overflow-auto">
                         <h5 class="card-title">Description:</h5>
                         <p class="card-text">{{tache.description}}</p>
@@ -57,9 +59,10 @@
                     </div>
                 </div>
                 <div class="card text-white bg-secondary mb-2" style="height:19rem" v-if="tache.etat_id ===3">
-                    <router-link to="/tache" class="text-white">
-                        <div class="card-header overflow-auto"><h5>{{tache.name}}</h5></div>
-                    </router-link>
+                        <div class="card-header overflow-auto">
+                            <h5>{{tache.name}}</h5>
+                        </div>
+                    
                     <div class="card-body overflow-auto">
                         <h5 class="card-title">Description:</h5>
                         <p class="card-text">{{tache.description}}</p>
@@ -78,15 +81,15 @@
                     </div>
                 </div>
             </div>
-            <router-view></router-view>
-        </div>  
+            <router-view ></router-view>
+        </div>
 
         <!-- Modal Ajour-->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Ajout d'une activité</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Ajout d'une tache</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -94,13 +97,13 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="nametache">Nom de l'activité</label>
-                                <input type="text" class="form-control" id="nametache" aria-describedby="nametache" placeholder="Nom de l'activité" maxlength="35" v-model="tacheName" required>
-                                <small id="nametache" class="form-text text-muted">Precisez le nom de votre activité.</small>
+                                <label for="nameTache">Nom de la tache</label>
+                                <input type="text" class="form-control" id="nameTache" aria-describedby="nameTache" placeholder="Nom de la tache" maxlength="35" v-model="tacheName" required>
+                                <small id="nameTache" class="form-text text-muted">Precisez le nom de votre tache.</small>
                             </div>
                             <div class="form-group">
                                 <label for="tacheDescription">Déscription:</label>
-                                <textarea class="form-control" id="tacheDescription" placeholder="Description de l'activité" v-model="tacheDescription"></textarea>
+                                <textarea class="form-control" id="tacheDescription" placeholder="Description de la tache" v-model="tacheDescription"></textarea>
                             </div>
                         </form>
                     </div>
@@ -112,38 +115,7 @@
             </div>
         </div>
 
-        <!-- Modal edit-->
-        <div class="modal fade" id="editModalCenter" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editModalLongTitle">Edition d'une activité</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="nametache">Nom de l'activité</label>
-                                <input type="text" class="form-control" id="nametache" aria-describedby="nametache" placeholder="Nom de l'activité" maxlength="35" v-model="tacheName" required>
-                                <small id="nametache" class="form-text text-muted">Precisez le nom de votre activité.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="tacheDescription">Déscription:</label>
-                                <textarea class="form-control" id="tacheDescription" placeholder="Description de l'activité" rows="5" v-model="tacheDescription"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-success" @click="tacheUpdate" data-dismiss="modal">Enregistrer</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-          <!-- Modal de confirmation -->
+        <!-- Modal de confirmation -->
         <div class="modal fade" id="confirme" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -163,16 +135,58 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal edit-->
+        <div class="modal fade" id="editModalCenter" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLongTitle">Edition d'une tache</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="nameTache">Nom de l'activité</label>
+                                <input type="text" class="form-control" id="nameTache" aria-describedby="nametache" placeholder="Nom de la tache" maxlength="35" v-model="tacheName" required>
+                                <small id="nameTache" class="form-text text-muted">Precisez le nom de votre tache.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="tacheDescription">Déscription:</label>
+                                <textarea class="form-control" id="tacheDescription" placeholder="Description de la tache" rows="3" v-model="tacheDescription"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"  id="flexRadioDefault1" v-model="etat" value=1>
+                                    <label class="form-check-label" for="flexRadioDefault1">Ouvert</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"  id="flexRadioDefault2" v-model="etat" value=2>
+                                    <label class="form-check-label" for="flexRadioDefault2">En cours</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio"  id="flexRadioDefault3" v-model="etat" value=3>
+                                    <label class="form-check-label" for="flexRadioDefault3">Terminé</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-success" @click="tacheUpdate" data-dismiss="modal">Enregistrer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
-
-
-
 <script>
-
     import UrlStore from "../stores/UrlStore";
     import { EditIcon, Trash2Icon } from "vue-feather-icons";
+
 
     export default {
 
@@ -180,66 +194,77 @@
             EditIcon,
             Trash2Icon,
         },
-
+        
         data(){
-            return{
-                taches: {},
+            return {
+                etat: '',
                 Url: UrlStore.data,
-                id: '',
+                activiteId: this.$route.params.id,
+                taches:{},
+                activite:{},
+                tachesActivite: {},
+                crit: '',
                 tacheName: '',
                 tacheDescription: '',
-                etat_id: '',
-                q: '',
+                id: '',
+                flexRadioDefault: '',
             }
         },
 
         created(){//recuperation des donnees envoyee par tacheController@index
-            axios.get(this.Url.url + '/tacheListe')
-                .then(response => this.taches = response.data)
-                .catch(error => console.log(error));
-
+            this.recuperation();
         },
 
         methods:{
+
+            recuperation(){
+                axios.get(this.Url.url + '/tacheListe/'+ this.activiteId)
+                .then(response => {
+                    this.tachesActivite = response.data;
+                    this.taches = this.tachesActivite.taches;
+                    this.activite = this.tachesActivite.activite;
+                    })
+                .catch(error => console.log(error));
+            },
+
             tacheStore(){
-                    if (this.tacheName != '') {
-                        axios.post(this.Url.url + '/tacheListe', {
+                if (this.tacheName != '') {
+                        axios.post(this.Url.url + '/tacheListe/'+ this.activiteId, {
                         name: this.tacheName,
                         description: this.tacheDescription,
                         etat_id: 1,
                         })
-                        .then(response => this.$emit('tache-liste', response.data))
+                        .then(response => {
+                            this.$emit('tache-liste', response.data);
+                            this.recuperation();
+                            })
                         .catch(error => console.log(error));
                     }
-                    axios.get(this.Url.url + '/tacheListe')
-                    .then(response => this.taches = response.data)
-                    .catch(error => console.log(error));
-                        
             },
 
             tacheUpdate(){
-                 if (this.tacheName != '') {
+                if (this.tacheName != '') {
                         axios.patch(this.Url.url + '/tacheListe/' + this.id, {
                         name: this.tacheName,
                         description: this.tacheDescription,
+                        etat_id : this.etat,
                         })
-                        .then(response => this.$emit('tache-liste', response.data))
+                        .then(response => {
+                            this.$emit('tache-liste', response.data)
+                            this.recuperation()
+                        })
                         .catch(error => console.log(error));
                     }
-                    axios.get(this.Url.url + '/tacheListe')
-                    .then(response => this.taches = response.data)
-                    .catch(error => console.log(error));
             },
-
             tacheDelete(){
                   if(this.id){
                       axios.delete(this.Url.url + '/tacheListe/' + this.id)
-                      .then(response => console.log(response.data))
+                      .then(response => {
+                          this.recuperation()
+                        })
                       .catch(error => console.log(error));
                   }
-                    axios.get(this.Url.url + '/tacheListe')
-                    .then(response => this.taches = response.data)
-                    .catch(error => console.log(error));  
+
             },
 
             edit(key){
@@ -248,30 +273,35 @@
                         this.id = element.id;
                         this.tacheName = element.name;
                         this.tacheDescription = element.description;
+                        this.etat = element.etat_id;
                     }
                 });
             },
 
-            init(){
-                this.tacheName = '';
-                this.tacheDescription='';
-                this.id = '';
-            },
-
-            searchtache(){
-                if (this.q.length >= 2) {
-                    axios.get(this.Url.url + '/tacheListe/' + this.q)
-                        .then(response => this.taches = response.data)
+            searchTache(){
+                if (this.crit.length >= 2) {
+                    axios.get(this.Url.url + '/tacheListe/'+this.activiteId+'/'+ this.crit)
+                        .then(response => {
+                            this.tachesActivite = response.data
+                            this.taches = this.tachesActivite.taches;
+                            this.activite = this.tachesActivite.activite;
+                            })
                         .catch(error => console.log(error));
                 } else {
-                    axios.get(this.Url.url + '/tacheListe')
-                        .then(response => this.taches = response.data)
-                        .catch(error => console.log(error));
+                   this.recuperation();
                 }
+                
+            },
+
+            init(){
+                this.tacheName = '';
+                this.tacheDescription = '';
             },
         },
 
-        mounted() {
-            console.log('Component mounted.')
+        mounted(){
+
         },
+        
     }
+</script>
