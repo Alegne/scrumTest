@@ -2459,7 +2459,8 @@ __webpack_require__.r(__webpack_exports__);
         axios.patch(this.Url.url + '/tacheListe/' + this.id, {
           name: this.tacheName,
           description: this.tacheDescription,
-          etat_id: this.etat
+          etat_id: this.etat,
+          activite_id: this.activiteId
         }).then(function (response) {
           _this3.$emit('tache-liste', response.data);
 

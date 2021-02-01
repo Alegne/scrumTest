@@ -53,10 +53,22 @@ class TacheController extends Controller
         $tache->description = request('description');
         $tache->activite_id = request('q');
         $tache->etat_id = 1;
-        if ($tache) {
-            $tache->save();
-            return $this->refresh();
+        $tache->save();
+        
+        $activite = Activite::with('taches')->find(request('q'));
+        foreach ($activite->taches as $task) {
+            if($task->etat_id != 3){//cas où tout n'est pas terminer
+                if($task->etat_id != 2){//cas où tous est ouvert
+                    $activite->etat_id = 1;
+                }else{//cas où il y a en cours
+                    $activite->etat_id = 2;
+                }
+            }else{//la où tous est terminer
+                $activite->etat_id = 3;
+            }
         }
+        $activite->save();
+        return $this->refresh();
     }
 
     /**
@@ -95,6 +107,34 @@ class TacheController extends Controller
         $tache->description = request('description');
         $tache->etat_id = request('etat_id');
         $tache->save();
+
+        ///////////////////////
+        $etat = 1;
+        $terminer = true;
+        $activite = Activite::with('taches')->find((int)request('activite_id'));
+        foreach ($activite->taches as $task) {
+            $etat *= $task->etat_id;
+            if ($task->etat_id == 1) {
+                $terminer = false;
+            }
+        }
+        if ($etat == 1) {
+            $activite->etat_id = 1;
+        } else {
+            if ($etat%2 == 0) {
+                $activite->etat_id = 2;
+            } else {
+                if (!$terminer) {
+                    $activite->etat_id = 2;
+                } else {
+                    $activite->etat_id = 3;
+                }  
+            }
+        }
+        
+        $activite->save();
+        
+        /////////////////////
 
         if($tache){
             return $this->refresh();

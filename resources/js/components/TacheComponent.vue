@@ -248,6 +248,7 @@
                         name: this.tacheName,
                         description: this.tacheDescription,
                         etat_id : this.etat,
+                        activite_id: this.activiteId,
                         })
                         .then(response => {
                             this.$emit('tache-liste', response.data)

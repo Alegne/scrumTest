@@ -18,7 +18,7 @@ class Activite extends Model
     //relation entre les tables
     public function taches()
     {
-        return $this->hasMany(Tache::classe);
+        return $this->hasMany(Tache::class);
     }
 
     public function etat()
