@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activite;
+use App\Models\Etat;
+use App\Models\Tache;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TacheController extends Controller
 {
@@ -13,7 +17,9 @@ class TacheController extends Controller
      */
     public function index()
     {
-        //
+        $activite = Activite::find(request('q'));
+        $taches = Tache::where('activite_id', request('q'))->get();
+        return response()->json($taches);
     }
 
     /**
@@ -34,7 +40,15 @@ class TacheController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tache = new Tache;
+        $tache->name = request('name');
+        $tache->description = request('description');
+        $tache->activite_id = request('q');
+        $tache->etat_id = 1;
+        if ($tache) {
+            $tache->save();
+            return $this->refresh();
+        }
     }
 
     /**
@@ -80,5 +94,11 @@ class TacheController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function refresh(){
+        $activite = Activite::find(request('q'));
+        $taches = Tache::where('activite_id', request('q'))->get();
+        return response()->json([$taches, $activite]);
     }
 }

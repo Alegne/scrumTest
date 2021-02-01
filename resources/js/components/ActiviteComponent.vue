@@ -15,7 +15,7 @@
         <div class="row" style="padding:0.5em">
             <div class="col-md-3" v-for="activite in activites" :key="activite.id">
                 <div class="card text-white bg-primary mb-2" style="height:19rem" v-if="activite.etat_id ===1">
-                    <router-link to="/tache" class="text-white">
+                    <router-link :to="'/tache/'+activite.id" class="text-white">
                         <div class="card-header overflow-auto"><h5>{{activite.name}}</h5></div>
                     </router-link>
                     <div class="card-body overflow-auto">
@@ -36,8 +36,8 @@
                     </div>
                 </div>
                 <div class="card text-white bg-success mb-2" style="height:19rem" v-if="activite.etat_id ===2">
-                    <router-link to="/tache" class="text-white">
-                        <div class="card-header overflow-auto"><h5>{{activite.name}}</h5></div>
+                    <router-link :to="'/tache/'+activite.id" class="text-white">
+                        <div class="card-header overflow-auto" ><h5>{{activite.name}}</h5></div>
                     </router-link>
                     <div class="card-body overflow-auto">
                         <h5 class="card-title">Description:</h5>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="card text-white bg-secondary mb-2" style="height:19rem" v-if="activite.etat_id ===3">
-                    <router-link to="/tache" class="text-white">
+                    <router-link :to="'/tache/'+activite.id" class="text-white">
                         <div class="card-header overflow-auto"><h5>{{activite.name}}</h5></div>
                     </router-link>
                     <div class="card-body overflow-auto">
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <router-view></router-view>
+            <router-view ></router-view>
         </div>  
 
         <!-- Modal Ajour-->
@@ -172,6 +172,7 @@
 <script>
 
     import UrlStore from "../stores/UrlStore";
+    import Activite from "../stores/ActiviteStore";
     import { EditIcon, Trash2Icon } from "vue-feather-icons";
 
     export default {

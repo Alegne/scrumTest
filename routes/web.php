@@ -26,4 +26,7 @@ Route::delete('/activiteListe/{id}', [ActiviteController::class, 'destroy'])->na
 
 
 //Route pour le TacheController
-//Route::get('tacheListe/{id}', 'TacheController@index');
+Route::get('/tacheListe/{q?}', [TacheController::class, 'index'])->name('tacheListeIndex');
+Route::post('tacheListe/{q?}', [TacheController::class, 'store'])->name('tacheListeStore');
+Route::patch('/tacheListe/{id}', [TacheController::class, 'update'])->name('tacheListeUpdate');
+Route::delete('/tacheListe/{id}', [TacheController::class, 'destroy'])->name('tacheListeDestroy');
