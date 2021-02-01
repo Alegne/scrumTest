@@ -1,7 +1,7 @@
 const UrlStore = {
 
     data: {
-        url : 'http://127.0.0.1:8000',
+        url : 'https://srcumtest.herokuapp.com',
     },
 
 };
