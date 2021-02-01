@@ -55,19 +55,8 @@ class TacheController extends Controller
         $tache->etat_id = 1;
         $tache->save();
         
-        $activite = Activite::with('taches')->find(request('q'));
-        foreach ($activite->taches as $task) {
-            if($task->etat_id != 3){//cas où tout n'est pas terminer
-                if($task->etat_id != 2){//cas où tous est ouvert
-                    $activite->etat_id = 1;
-                }else{//cas où il y a en cours
-                    $activite->etat_id = 2;
-                }
-            }else{//la où tous est terminer
-                $activite->etat_id = 3;
-            }
-        }
-        $activite->save();
+        $activ_id = (int)request('activite_id');
+        $this->etatArrangement($activ_id);
         return $this->refresh();
     }
 
@@ -108,10 +97,41 @@ class TacheController extends Controller
         $tache->etat_id = request('etat_id');
         $tache->save();
 
-        ///////////////////////
+        $activ_id = (int)request('activite_id');
+        $this->etatArrangement($activ_id);
+        if($tache){
+            return $this->refresh();
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $tache = Tache::find($id);
+        $activ_id = $tache->activite_id;
+        if ($tache->delete()) {
+            $this->etatArrangement($activ_id);
+            return $this->refresh();
+        } else {
+            return response()->json(['error' => 'Erreur lors de la suppression!'], 425);
+        }
+    }
+
+    protected function refresh(){
+        $activite = Activite::find(request('q'));
+        $taches = Tache::orderBy('created_at', 'DESC')->where('activite_id', request('q'))->get();
+        return response()->json(['taches'=>$taches, 'activite'=>$activite]);
+    }
+
+    protected function etatArrangement($activ_id){
         $etat = 1;
         $terminer = true;
-        $activite = Activite::with('taches')->find((int)request('activite_id'));
+        $activite = Activite::with('taches')->find($activ_id);
         foreach ($activite->taches as $task) {
             $etat *= $task->etat_id;
             if ($task->etat_id == 1) {
@@ -130,36 +150,7 @@ class TacheController extends Controller
                     $activite->etat_id = 3;
                 }  
             }
-        }
-        
+        } 
         $activite->save();
-        
-        /////////////////////
-
-        if($tache){
-            return $this->refresh();
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $tache = Tache::find($id);
-        if ($tache->delete()) {
-            return $this->refresh();
-        } else {
-            return response()->json(['error' => 'Erreur lors de la suppression!'], 425);
-        }
-    }
-
-    protected function refresh(){
-        $activite = Activite::find(request('q'));
-        $taches = Tache::orderBy('created_at', 'DESC')->where('activite_id', request('q'))->get();
-        return response()->json(['taches'=>$taches, 'activite'=>$activite]);
     }
 }

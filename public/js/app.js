@@ -2442,7 +2442,8 @@ __webpack_require__.r(__webpack_exports__);
         axios.post(this.Url.url + '/tacheListe/' + this.activiteId, {
           name: this.tacheName,
           description: this.tacheDescription,
-          etat_id: 1
+          etat_id: 1,
+          activite_id: this.activiteId
         }).then(function (response) {
           _this2.$emit('tache-liste', response.data);
 
@@ -2474,7 +2475,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       if (this.id) {
-        axios["delete"](this.Url.url + '/tacheListe/' + this.id).then(function (response) {
+        axios["delete"](this.Url.url + '/tacheListe/' + this.id, {
+          activite_id: this.activiteId
+        }).then(function (response) {
           _this4.recuperation();
         })["catch"](function (error) {
           return console.log(error);

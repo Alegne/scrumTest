@@ -233,6 +233,7 @@
                         name: this.tacheName,
                         description: this.tacheDescription,
                         etat_id: 1,
+                        activite_id: this.activiteId,
                         })
                         .then(response => {
                             this.$emit('tache-liste', response.data);
@@ -259,7 +260,9 @@
             },
             tacheDelete(){
                   if(this.id){
-                      axios.delete(this.Url.url + '/tacheListe/' + this.id)
+                      axios.delete(this.Url.url + '/tacheListe/' + this.id,{
+                          activite_id: this.activiteId,
+                      })
                       .then(response => {
                           this.recuperation()
                         })
