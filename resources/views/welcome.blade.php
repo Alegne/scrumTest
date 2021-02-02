@@ -24,14 +24,14 @@
                         <div class="bd-toc-item">
                             <ul class="flex-column nav nav-pills nav-fill bd-sidenav">
                                 <li class="nav-item">
-                                    <router-link class="nav-link active" to="/">
+                                    <router-link class="nav-link active mt-4" to="/">
                                         <h4><span data-feather="home"></span>Activités <span class="sr-only">(current)</span></h4>
                                     </router-link>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">
+                                    <router-link class="nav-link active mt-4" to="/dashboard">
                                         <h4><span data-feather="file"></span>Dashboard</h4>
-                                    </a>
+                                    </router-link>
                                 </li>
                             </ul>
                         </div>

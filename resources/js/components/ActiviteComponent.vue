@@ -9,7 +9,6 @@
                 <i class="fas fa-plus-circle" style="font-size:2em; margin:0.05em"></i>
             </button>
             </form>
-            
         </nav>
 
         <div class="row" style="padding:0.5em">
@@ -172,7 +171,6 @@
 <script>
 
     import UrlStore from "../stores/UrlStore";
-    import Activite from "../stores/ActiviteStore";
     import { EditIcon, Trash2Icon } from "vue-feather-icons";
 
     export default {

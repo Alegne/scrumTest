@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Activite;
 use App\Models\Etat;
@@ -122,6 +123,12 @@ class ActiviteController extends Controller
             return response()->json(['error' => 'Erreur lors de la suppression!'], 425);
         }
         
+    }
+
+    public function dashRecupere()
+    {
+        $nbEtat = DB::table('activites')->select(DB::raw('count(*) as nbEtat'))->groupBy('etat_id')->get();
+        return response()->json($nbEtat);
     }
 
     protected function refresh()

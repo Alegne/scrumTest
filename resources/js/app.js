@@ -1,16 +1,14 @@
-
 require('./bootstrap');
-
 window.Vue = require('vue').default;
 
 //utilisation des routes en VueJs
 import VueRouter from 'vue-router';
-
-Vue.use(VueRouter);
-
 import Activite from './components/ActiviteComponent.vue';
 import Tache from './components/TacheComponent.vue';
+import Dashboard from './components/DashboardComponent.vue';
+import DashTache from './components/DashTacheComponent.vue';
 
+Vue.use(VueRouter);
 
 const routes = [
     {
@@ -21,11 +19,18 @@ const routes = [
         path: '/tache/:id',
         component: Tache,
     },
+    {
+        path: '/dashboard',
+        component: Dashboard,
+    },
+    {
+        path: '/dashTache/:id',
+        component: DashTache,
+    },
 ];
 
 const router = new VueRouter({routes});
 
-//Vue.component('home-component', require('./components/HomeComponent.vue').default);
 Vue.component('activite-component', require('./components/ActiviteComponent.vue').default);
 
 
