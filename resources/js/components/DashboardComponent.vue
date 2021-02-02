@@ -5,8 +5,8 @@
             <form class="form-inline">
                 <select class="custom-select " style="width: 20.60rem;">
                   <option v-for="activite in activites" :key="activite.id">{{activite.name}}</option>
-                  <!--<router-link v-for="activite in activites" :key="activite.id" :to="'/dashTache/'+activite.id">   -->
-                  </router-link>
+                  <!--<router-link v-for="activite in activites" :key="activite.id" :to="'/dashTache/'+activite.id">  
+                  </router-link> -->
                 </select>
             </form>        
         </nav>
