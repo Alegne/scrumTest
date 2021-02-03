@@ -2207,51 +2207,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var _stores_UrlStore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../stores/UrlStore */ "./resources/js/stores/UrlStore.js");
-/* harmony import */ var _chart_tacheBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../chart/tacheBar */ "./resources/js/chart/tacheBar.js");
 //
 //
 //
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    BarChart: _chart_tacheBar__WEBPACK_IMPORTED_MODULE_1__.default
-  },
-  data: function data() {
-    return {
-      Url: _stores_UrlStore__WEBPACK_IMPORTED_MODULE_0__.default.data,
-      taches: {}
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get(this.Url.url + '/tacheListe').then(function (response) {
-      return _this.taches = response.data;
-    })["catch"](function (error) {
-      return console.log(error);
-    });
-  },
-  methods: {}
-});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
 
@@ -2288,6 +2250,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2297,7 +2264,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       Url: _stores_UrlStore__WEBPACK_IMPORTED_MODULE_0__.default.data,
-      activites: {}
+      activites: {},
+      tacheCourant: ''
     };
   },
   mounted: function mounted() {
@@ -2309,7 +2277,13 @@ __webpack_require__.r(__webpack_exports__);
       return console.log(error);
     });
   },
-  methods: {}
+  methods: {
+    /*
+    click(id){
+       router.push({ name: 'dashTache', params:{ id: id}})
+     }
+     */
+  }
 });
 
 /***/ }),
@@ -2670,6 +2644,7 @@ var routes = [{
   component: _components_DashboardComponent_vue__WEBPACK_IMPORTED_MODULE_2__.default
 }, {
   path: '/dashTache/:id',
+  name: 'dashTache',
   component: _components_DashTacheComponent_vue__WEBPACK_IMPORTED_MODULE_3__.default
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__.default({
@@ -2773,63 +2748,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.renderChart(_this.chartdata, _this.options);
 
       _this.nbEtatActivite.forEach(function (element) {
-        _this.chartdata.datasets[0].data[_this.i] = element.nbEtat;
-        _this.i = _this.i + 1;
-      });
-    })["catch"](function (error) {
-      return console.log(error);
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/chart/tacheBar.js":
-/*!****************************************!*\
-  !*** ./resources/js/chart/tacheBar.js ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-/* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
-/* harmony import */ var _stores_UrlStore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../stores/UrlStore */ "./resources/js/stores/UrlStore.js");
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__.HorizontalBar,
-  data: function data() {
-    return {
-      Url: _stores_UrlStore__WEBPACK_IMPORTED_MODULE_1__.default.data,
-      nbEtatTache: null,
-      i: null,
-      chartdata: {
-        labels: ['Ouvert', 'En cours', 'Terminé'],
-        datasets: [{
-          label: ['Repartition des activités selon son status'],
-          backgroundColor: ['#0000ff', '#00FF00', '#999999'],
-          data: []
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false
-      }
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get(this.Url.url + '/tacheDash/').then(function (response) {
-      _this.i = 0;
-      _this.nbEtattache = response.data;
-
-      _this.renderChart(_this.chartdata, _this.options);
-
-      _this.nbEtatache.forEach(function (element) {
         _this.chartdata.datasets[0].data[_this.i] = element.nbEtat;
         _this.i = _this.i + 1;
       });
@@ -91893,50 +91811,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container-fluid" },
-    [
-      _c(
-        "nav",
-        {
-          staticClass: "navbar navbar-dark sticky-top",
-          staticStyle: { "background-color": "rgb(247, 247, 247)" }
-        },
-        [
-          _c("h2", [
-            _vm._v("Resumé graphique d'état des Taches " + _vm._s(" ")),
-            _c("span", { staticClass: "badge badge-secondary" }, [
-              _vm._v(_vm._s(_vm.taches.length))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("form", { staticClass: "form-inline" }, [
-            _c(
-              "select",
-              {
-                staticClass: "custom-select ",
-                staticStyle: { width: "20.60rem" }
-              },
-              [
-                _c("router-link", { attrs: { to: "/dashboard" } }, [
-                  _c("button", { staticClass: "btn btn-secondary" }, [
-                    _vm._v("Retour")
-                  ])
-                ])
-              ],
-              1
-            )
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "container-fluid" }, [_c("bar-chart")], 1),
-      _vm._v(" "),
-      _c("router-view")
-    ],
-    1
-  )
+  return _c("div", { staticClass: "container-fluid" })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -91977,22 +91852,6 @@ var render = function() {
             _c("span", { staticClass: "badge badge-secondary" }, [
               _vm._v(_vm._s(_vm.activites.length))
             ])
-          ]),
-          _vm._v(" "),
-          _c("form", { staticClass: "form-inline" }, [
-            _c(
-              "select",
-              {
-                staticClass: "custom-select ",
-                staticStyle: { width: "20.60rem" }
-              },
-              _vm._l(_vm.activites, function(activite) {
-                return _c("option", { key: activite.id }, [
-                  _vm._v(_vm._s(activite.name))
-                ])
-              }),
-              0
-            )
           ])
         ]
       ),

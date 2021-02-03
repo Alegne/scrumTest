@@ -153,4 +153,8 @@ class TacheController extends Controller
         } 
         $activite->save();
     }
+
+    public function dashRecupere(){
+      //mbola tsis  
+    }
 }

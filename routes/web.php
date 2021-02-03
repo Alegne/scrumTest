@@ -26,7 +26,7 @@ Route::post('/activiteListe/{q?}', [ActiviteController::class, 'store'])->name('
 
 //ceux qui concrene le dash sur l'activite
 Route::get('/activiteDash', [ActiviteController::class, 'dashRecupere'])->name('activiteDashRecupere');
-Route::get('/tacheListe/{q?}/', [TacheController::class, 'dashRecupere'])->name('tacheDashRecupere');
+//Route::get('/tacheDash/{q?}/', [TacheController::class, 'dashRecupere'])->name('tacheDashRecupere');
 
 //Route pour le TacheController
 Route::get('/tacheListe/{q?}/{crit?}', [TacheController::class, 'index'])->name('tacheListeIndex');

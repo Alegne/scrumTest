@@ -25,6 +25,7 @@ const routes = [
     },
     {
         path: '/dashTache/:id',
+        name: 'dashTache',
         component: DashTache,
     },
 ];

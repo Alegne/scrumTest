@@ -14,7 +14,7 @@ export default {
       labels: ['Ouvert', 'En cours', 'Terminé'],
       datasets: [
         {
-          label: ['Repartition des activités selon son status'],
+          label: ['Repartition des taches selon son status'],
           backgroundColor: ['#0000ff', '#00FF00', '#999999'],
           data: [ ]
         },
